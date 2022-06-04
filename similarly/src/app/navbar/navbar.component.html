@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <span>Similarly</span>
+
+  <a mat-button *ngIf="isAuthenticated" routerLink="app-play"><mat-icon>play_circle_filled</mat-icon>Play</a>
+  <a mat-button>About Similarly</a>
+  <a mat-button *ngIf="!isAuthenticated" routerLink="register">Register</a>
+  <a mat-raised-button *ngIf="!isAuthenticated" color="accent" routerLink="login"><span>Login</span><mat-icon>input</mat-icon></a>
+  <a mat-raised-button *ngIf="isAuthenticated" (click)="logout()" color="accent" routerLink="login"><span>Logout</span></a>
+
+</mat-toolbar>
