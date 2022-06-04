@@ -8,7 +8,15 @@ const QuestionSchema = mongoose.Schema({
     body: {
         type: String,
         required: true
+    },
+    answer1: {
+        type: String,
+        required: true,
+    },
+    answer2: {
+        type: String,
+        required: true
     }
 });
 
-module.exports = mongoose.model('Questions', QuestionSchema);
+module.exports = mongoose.model('Question', QuestionSchema);
