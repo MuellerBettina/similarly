@@ -7,8 +7,8 @@
     <h3>{{unanswered_questions[questionIndex].body}}</h3>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="saveAnswer('answer1', unanswered_questions[questionIndex]._id)">{{unanswered_questions[questionIndex].answer1}}</button>
-    <button mat-button (click)="saveAnswer('answer2', unanswered_questions[questionIndex]._id)">{{unanswered_questions[questionIndex].answer2}}</button>
+    <button mat-button (click)="saveAnswer('answer1', unanswered_questions[questionIndex]._id); skipQuestion()">{{unanswered_questions[questionIndex].answer1}}</button>
+    <button mat-button (click)="saveAnswer('answer2', unanswered_questions[questionIndex]._id); skipQuestion()">{{unanswered_questions[questionIndex].answer2}}</button>
     <button mat-raised-button color="accent" (click)="skipQuestion()">Skip<mat-icon>skip_next</mat-icon></button>
   </mat-card-actions>
 </mat-card>
