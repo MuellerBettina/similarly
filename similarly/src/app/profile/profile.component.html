@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<mat-card class="question-card" *ngFor="let question of answered_questions">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{question.title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h3>{{question.body}}</h3>
+  </mat-card-content>
+</mat-card>
