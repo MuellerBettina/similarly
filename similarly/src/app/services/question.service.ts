@@ -40,6 +40,14 @@ export class QuestionService {
       );
   }
 
+  fetchAllAnsweredQuestions(user_id: Pick<User, "id"> | undefined): Observable<Question[]>{
+    return this.http
+      .get<Question[]>(`${this.questionsUrl}/answered/${user_id}`, { responseType: 'json'})
+      .pipe(
+        catchError(this.errorHandlerService.handleError<Question[]>('fetchAllAnsweredQuestions', []))
+      );
+  }
+
   postSelection(user_id: Pick<User, "id"> | undefined, selected_answer: string, question_id: string): Subscription{
     console.log('this is the user id',user_id, 'this is the selected answer:', selected_answer,'this is the question_id', question_id)
     return this.http
