@@ -18,6 +18,7 @@ export class PlayComponent implements OnInit {
   unanswered_questions: Question[] | undefined
   question$: Observable<Question> | undefined
 
+  amountOfUnAnsweredQuestions = 0;
   questionIndex = 0;
 
   constructor(
@@ -28,12 +29,12 @@ export class PlayComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.user_id = this.authService.userId
     this.unanswered_questions = await lastValueFrom(this.getUnansweredQuestions(this.user_id));
+    this.amountOfUnAnsweredQuestions = this.unanswered_questions.length
     /*this.questions$ = this.getQuestions();*/
 
   }
 
   getUnansweredQuestions(user_id: Pick<User, "id"> | undefined): Observable<Question[]> {
-    console.log(this.questionService.fetchAllUnansweredQuestions(user_id));
     return this.questionService.fetchAllUnansweredQuestions(user_id);
   }
 
@@ -42,7 +43,7 @@ export class PlayComponent implements OnInit {
   }
 
   skipQuestion(): void {
-    if (this.questionIndex !== this.getUnansweredQuestions.length+1){
+    if (this.questionIndex < this.amountOfUnAnsweredQuestions-1){
       this.questionIndex++;
     }
     else {
