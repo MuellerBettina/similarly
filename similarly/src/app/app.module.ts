@@ -15,12 +15,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlayComponent } from './play/play.component';
 import { MatCardModule } from "@angular/material/card";
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PlayComponent
+    PlayComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
