@@ -17,13 +17,15 @@ import { PlayComponent } from './play/play.component';
 import { MatCardModule } from "@angular/material/card";
 import { ProfileComponent } from './profile/profile.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { GeolocationComponent } from './geolocation/geolocation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PlayComponent,
-    ProfileComponent
+    ProfileComponent,
+    GeolocationComponent
   ],
   imports: [
     BrowserModule,
