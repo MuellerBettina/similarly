@@ -5,65 +5,50 @@ exports.showUnansweredByUser = async (req, res, next) => {
 
     const user_id = req.params.user_id;
 
-    const questionIds = await Selection.aggregate(
-        [
-            {
-                $match: {
-                    "user_id": user_id
-                }
-            },
-            {
-                $unset: [
-                    "user_id",
-                    "selected_answer",
-                    "_id",
-                    "__v"
-                ]
-            },
-            {
-                $group: {
-                    "_id": "",
-                    "question_id": {
-                        $push: "$question_id"
+    try {
+        const questionIds = await Selection.aggregate(
+            [
+                {
+                    $match: {
+                        "user_id": user_id
+                    }
+                },
+                {
+                    $unset: [
+                        "user_id",
+                        "selected_answer",
+                        "_id",
+                        "__v"
+                    ]
+                },
+                {
+                    $group: {
+                        "_id": "",
+                        "question_id": {
+                            $push: "$question_id"
+                        }
                     }
                 }
-            }
-        ]
-    )
-
-    if(questionIds !== null){
+            ]
+        )
         const idsArray = questionIds[0].question_id;
-        console.log(idsArray);
-    } else {
-        console.log('this is the else');
-    }
 
 
-        /*if(idsArray !== null){
-            const unansweredQuestions = await Question.aggregate(
-                [
-                    {
+        const unansweredQuestions = await Question.aggregate(
+            [
+                {
                         $addFields: { _id: { $toString: "$_id" }}
-                    },
-                    {
+                },
+                {
                         $match: { _id: { $nin: idsArray}}
-                    }
-                ]
-            )
-            res.json(unansweredQuestions)
-        } else {
-            console.log("all questions are unanswered.")
-            /!*const unansweredQuestions = await Question.aggregate(
-                [
-                    {
-                        $addFields: { _id: { $toString: "$_id" }}
-                    }
-                ]
-            )
-            res.json(unansweredQuestions)*!/
-        }*/
+                }
+                ])
+        res.json(unansweredQuestions)
 
-
+    } catch {
+        const unansweredQuestions = await Question.find()
+        res.json(unansweredQuestions)
+    }
 }
 
 exports.showAnsweredByUser = async (req, res, next) => {
