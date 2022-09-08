@@ -1,3 +1,9 @@
 button{
   margin-left: 40%;
 }
+
+#map {
+  height: 50%;
+  width: 50%;
+  margin: 5% 25% 10% 25%;
+}
