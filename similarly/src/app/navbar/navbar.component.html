@@ -1,9 +1,10 @@
-<mat-toolbar color="primary" class="mat-elevation-z8">
+<mat-toolbar color="primary" class="mat-elevation-z8" fxLayout="row">
   <span>Similarly</span>
 
   <a mat-button *ngIf="isAuthenticated" routerLink="app-play"><mat-icon>play_circle_filled</mat-icon>Play</a>
   <a mat-button>About Similarly</a>
   <a mat-button *ngIf="!isAuthenticated" routerLink="register">Register</a>
+  <button mat-button *ngIf="isAuthenticated" class="enable-notifications mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent" (click)="askForNotificationPermission()">Turn on notifications</button>
   <a mat-raised-button *ngIf="!isAuthenticated" color="accent" routerLink="login" class="login-button"><span>Login</span><mat-icon>input</mat-icon></a>
   <a mat-mini-fab color="black" *ngIf="isAuthenticated" routerLink="app-profile" [matMenuTriggerFor]="menu" class="profile-button"><mat-icon>account_circle</mat-icon></a>
   <mat-menu #menu="matMenu">

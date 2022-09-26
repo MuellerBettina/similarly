@@ -1,0 +1,10 @@
+<button mat-dialog-close="true" mat-mini-fab color="primary">
+  <mat-icon>close</mat-icon>
+</button>
+<video id="player" autoplay></video>
+<button mat-raised-button id="capture-btn" (click)="capturePicture()">Take Picture</button>
+<canvas id="canvas" width="320px" height="240px"></canvas>
+<div id="pick-image">
+  <input type="file" accept="image/*" id="image-picker">
+</div>
+<button mat-raised-button (click)="submitProfilePicture()">Submit</button>

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from "@angular/material/dialog";
 import { AppComponent } from './app.component';
 import { AuthModule } from "./auth/auth.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,8 +17,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PlayComponent } from './play/play.component';
 import { MatCardModule } from "@angular/material/card";
 import { ProfileComponent } from './profile/profile.component';
-import {MatMenuModule} from "@angular/material/menu";
+import { MatMenuModule } from "@angular/material/menu";
 import { GeolocationComponent } from './geolocation/geolocation.component';
+import { CameraComponent } from './camera/camera.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { GeolocationComponent } from './geolocation/geolocation.component';
     NavbarComponent,
     PlayComponent,
     ProfileComponent,
-    GeolocationComponent
+    GeolocationComponent,
+    CameraComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +37,13 @@ import { GeolocationComponent } from './geolocation/geolocation.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
+    FlexLayoutModule,
     AuthModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('my-service-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).

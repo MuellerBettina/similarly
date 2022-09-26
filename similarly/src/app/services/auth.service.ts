@@ -14,10 +14,16 @@ export class AuthService {
   private authUrl = 'http://localhost:3000/users';
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
-  userId: Pick<User, 'id'> | undefined
+  userId: Pick<User, 'id'> | undefined;
+  currentUser$: User | undefined;
+  file: any;
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'} ),
+  };
+
+  specialHttpOptions: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({'Access-Control-Allow-Origin': '*'}),
   };
 
   constructor(
@@ -50,4 +56,24 @@ export class AuthService {
           token: string; userId: Pick<User, 'id'>
         }>('login')));
   }
+
+  getUser(user_id: Pick<User, "id"> | undefined): Observable<User>{
+    return this.http
+      .get<User>(`${this.authUrl}/${user_id}`, {responseType: 'json'})
+      .pipe(
+        catchError(this.errorHandlerService.handleError<User>('getUser'))
+      )
+  }
+
+  addProfilePicture(user_id: Pick<User, "id"> | undefined, file: any): Observable<User> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http
+      .post<any>(`${this.authUrl}/${user_id}`, formData, this.specialHttpOptions).pipe(
+        first(),
+        catchError(this.errorHandlerService.handleError<User>('addProfilePicture'))
+      );
+  }
+
 }

@@ -1,0 +1,23 @@
+.profile-image > img {
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.user-card {
+  max-width: 30%;
+  margin: 10% 35% 10% 35%;
+}
+
+.profile-image > button {
+  bottom: 10px;
+  right: 0;
+}
+
+.profile-image {
+  text-align: center;
+}
+
+mat-card-header {
+  justify-content: center;
+}
