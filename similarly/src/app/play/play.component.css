@@ -1,5 +1,10 @@
 .question-card {
-  max-width: 30%;
-  margin: 10% 35% 10% 35%;
+  max-width: 350px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
+.play-card {
+  display: flex;
+  justify-content: center;
 }

@@ -4,6 +4,10 @@
         crossorigin=""/>
 </header>
 
-<button mat-raised-button color="primary" (click)="showLocation()">Show my location!</button>
+<div class="location-button">
+  <button mat-raised-button color="primary" (click)="showLocation()">Show my location!</button>
+</div>
+<div class="geolocation-map">
+  <div id="map"></div>
+</div>
 
-<div id="map"></div>

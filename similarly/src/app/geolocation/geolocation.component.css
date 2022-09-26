@@ -1,9 +1,24 @@
-button{
-  margin-left: 40%;
+.location-button {
+  display: flex;
+  justify-content: center;
 }
 
-#map {
-  height: 50%;
-  width: 50%;
-  margin: 5% 25% 10% 25%;
+@media screen and (min-width: 600px){
+  #map {
+    height: 400px;
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #map {
+    height: 600px;
+    width: 800px;
+  }
+}
+
+.geolocation-map {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
