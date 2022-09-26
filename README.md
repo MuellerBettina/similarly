@@ -32,4 +32,4 @@ Im Folgenden werden die Features dieser App und die Grundidee beschrieben.
 
 - Projekt klonen mit Hilfe von `git clone https://github.com/MuellerBettina/similarly.git`
 - Im Ordner 'similarly' `npm install` ausführen
-- Das Frontend kann mit npm start gestartet werden
+- Das Frontend kann mit `npm start` gestartet werden
